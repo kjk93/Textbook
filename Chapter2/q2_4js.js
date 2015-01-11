@@ -3,12 +3,18 @@ function oddSquares(){
 	for(var i = 1; i <= 100; i++){
 		if(longWay(i) != shortWay(i)){
 			proof = false;
-		}
-		else{
-			console.log(i + " passed");
+			var failed = i;
 		}
 	}
-	console.log(proof);
+	if(proof){
+		var t = document.createTextNode("The proof is true for numbers 1 - 100");
+	}
+	else{
+		var t = document.createTextNode("The proof is false by the number " + failed);
+	}
+	var p = document.createElement('p');
+	p.appendChild(t);
+	document.body.appendChild(p);
 }
 
 function longWay(num){
