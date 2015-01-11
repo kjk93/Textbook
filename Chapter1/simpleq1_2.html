@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<script type="text/javascript">
+			var checkSquare = 4 //Enter the number to check here
+
+			function check(){
+				var square = false;
+
+				for(var i = 1; i < checkSquare; i++){
+					if (i*i == 4){
+						square = true;
+						document.write(checkSquare + " is a square!");
+					}
+				}
+
+				if (square == false){
+					document.write(checkSquare + " is NOT a square");
+				}
+			}
+
+			check();
+		</script>
+		<meta charset="utf-8">
+	</head>
+	<body>
+	</body>
+</html>
