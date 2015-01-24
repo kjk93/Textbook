@@ -10,15 +10,15 @@ function triangleNumbers(){
 		while(!varify){
 			//console.log("Before check");
 			check = (number*(number + 1))/2;
-			//console.log(check);
-			//console.log("Is square is " + isSquare(check));
+			console.log(check);
+			console.log("Is square is " + isSquare(check));
 			if(isSquare(check)){
 				varify = true;
 			}
-		//	console.log(number + "     " + count);
+			console.log(number + "     " + count);
 			number++;
 		}
-		//console.log(count + " number is " + check);
+		console.log(count + " number is " + check);
 		var li = document.createElement("li");
 		var t = document.createTextNode(check);
 		li.appendChild(t);
@@ -30,18 +30,11 @@ function triangleNumbers(){
 }
 
 function isSquare(num){
-	var square = false;
-
-	if(num == 1){
-		square = true;
+	var n = Math.sqrt(num);
+	if(n%1 == 0){
+		return true;
 	}
-
-	for(var i = 1; i < num; i++){
-		if(i*i == num){
-			square = true;
-			i = num;
-		}
+	else{
+		return false;
 	}
-
-	return square;
 }

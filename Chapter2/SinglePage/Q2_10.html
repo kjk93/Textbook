@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Question 2.8</title>
+		<script type="text/javascript">
+		function triSquares(){
+			squares = [];
+			squares = addSquare(squares);
+			var proof = true;
+			var n = 1;
+			var lastTri = 0;
+
+			while(proof && n<=100){
+				//Find the next triangle number
+				var tri = n + lastTri;
+				while(addSquare[addSquare.length-1] < tri){
+					squares = addSquare(squares);
+				}
+				var sum = false;
+				var index = 1;
+				while(!sum && squares[index] < tri){
+					if((squares[index] + squares[index - 1]) == tri){
+						sum = true;
+						proof = false;
+						document.write("The proof is false " + squares[index] + " + " + squares[index - 1]);
+					}
+					else{
+						index++;
+					}
+				}
+				n++;
+			}
+			if(proof){
+				document.write("The proof is true");
+			}
+		}
+		function addSquare(array){
+			var square;
+			var last = array.length + 1;//the next oblong number to be added (skip 1)
+			square = last*last;
+			array.push(square);
+			return array;
+		}
+		function addTriangle(array){
+			if(array.length == 0){
+				array.push(1);
+			}
+			else{
+				var toAdd;
+				toAdd = array[array.length - 1] + (array.length + 1);
+				array.push(toAdd);
+			}
+			return array;
+		}
+		</script>
+	</head>
+	<body onload="triSquares()">
+		<h1>100 Triangles</h1><br/>
+	</body>
+</html>

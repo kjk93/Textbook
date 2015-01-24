@@ -1,0 +1,73 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Representing fractions </title>
+<script>
+var denoms = [];    //will hold the denominators
+function expand(){
+  var a = parseInt(document.f.an.value);
+  var b = parseInt(document.f.bn.value);
+  var j;
+  //alert("a is "+a+" and b is "+b);
+  
+    //build up denoms
+    for (var i=0;i<a;i++){
+       denoms.push(b);
+
+    }  //end initial for loop
+   
+    //start to work on denoms, expanding any repeats
+    j = 1;
+    while (j<denoms.length){
+       //check if jth element is a repeat of any prior elements
+       jok = true;
+       for (var k=0;k<j;k++){
+        denomAtJ = denoms[j];
+         if (denomAtJ==denoms[k]) {
+          //need to change denom j
+          denoms.splice(j,1,denomAtJ+1,denomAtJ*(denomAtJ+1));
+          jok = false;
+          break;
+         }  //ends if
+
+       }
+       if (jok){j++;}
+       
+    }  //ends while
+
+  
+
+  //print out answer using denoms
+  answerst ="";
+  for (var i=0;i<denoms.length;i++){
+    answerst+="<br/> 1 / "+denoms[i];
+
+  }
+  document.getElementById("answer").innerHTML = answerst;
+  denoms = [];  //prepare for next task
+  return false;
+  
+}  //ends function
+
+
+</script>
+</head>
+<body>
+<form name="f" onsubmit="return expand();">
+Enter numerator and denominator (positive integers, please) <br/>
+<input type="number" name="an" min="1"/> <br/>
+__________________
+<br/>
+
+<input type="number" name="bn" min="1"/>
+<br/>
+<input type="submit" value="Submit"/>
+</form>
+<br/>
+Expansion of fraction is: <br/>
+<div id="answer">
+
+</div>
+</body>
+</html>

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Question 1.18</title>
+		<script type="text/javascript">
+		function semiPerfect(){
+			var num = document.getElementById("num").value;
+			//Test for abundence
+			var div = num - 1;
+			var divisors = [];
+			var sum = 0;
+			var abund = false;
+			var semi = false;
+
+			while(div > 0){
+				if(num%div == 0){
+					divisors.push(div);
+				}
+				div--;
+			}
+
+			for(var i = 0; i < divisors.length; i++){
+				sum = sum + divisors[i];
+			}
+
+			if(sum > num){
+				abund = true;
+				sum = 0;//reset sum
+				var sums = [];
+				var divPos = 0;
+				var currentNum = divisors[divPos];
+				while(divPos >= 0 && semi == false){
+					if(sum + currentNum < num){
+						sum = sum + currentNum;
+						sums.push(currentNum);
+						divPos++;
+					}
+					else if(sum + currentNum == num){
+						semi = true;
+						sums.push(currentNum);
+						sum = sum + currentNum;
+					}
+					else{//sums + currentNum > num
+						divPos++;
+					}
+					currentNum = divisors[divPos];
+				}
+			}
+			else{
+				document.write("The number is not abundent");
+			}
+			if(abund){
+				if(semi){
+					document.write("The number is semiPerfect<br/>The divisors are " + printAddition(sums, num));
+				}
+				else{
+					document.write("The number is not semiPerfect");
+				}
+			}
+		}
+
+		function printAddition(nums, total){
+			var addString = "";
+			for(i = 0; i < nums.length; i++){
+				if(i > 0){
+					addString = addString + " + " + nums[i];
+				}
+				else{
+					addString = "" + nums[i];
+				}	
+			}
+			addString = addString +  " = " + total;
+			return addString;
+		}
+		</script>
+		<meta charset="utf-8">
+	</head>
+	<body>
+		<h1>Semi-Perfect Abundant Numbers</h1><br/>
+		<h2>Please enter a number</h2><br/>
+		<form name="numForm">
+			<input type="text" id="num"/>
+		</form>
+		<button onclick="semiPerfect()">Check</button>
+	</body>
+</html>

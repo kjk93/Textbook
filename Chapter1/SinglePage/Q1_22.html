@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Question 1.22</title>
+		<script type="text/javascript">
+		function perfectOdds(){
+			var varified = true;
+			var count = 0;
+			var num = 1;
+			while(count < 1000 && varified){
+				var div = num - 1;
+				var divisors = [];
+
+				while(div > 0){
+					if(num%div == 0){
+						divisors.push(div);
+					}
+					div--;
+				}
+
+				var sum = 0;
+
+				for(var i = 0; i < divisors.length; i++){
+					sum = sum + divisors[i];
+				}
+
+				if(sum == num){
+					varified = false;
+					console.log("The number " + num + " is perfect");
+				}
+				count++;
+				num = num + 2;
+			}
+
+			if(varified){
+				document.write("None of the first 1000 odds are perfect");
+			}
+			else{
+				document.write("The number " + num + " is perfect");
+			}
+		}
+		</script>
+	</head>
+	<body onload="perfectOdds()">
+		<h1>Perfect Odds?</h1><br/>
+	</body>
+</html>

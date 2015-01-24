@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Question 1.20</title>
+		<script type="text/javascript">
+		function abundentOdd(){
+			//varify 945 is smallest odd
+			var num = 943
+			var varify = true;
+
+			//Varify Abundent Odds
+			while(num > 0 && varify){
+				var div = num - 1;
+				var divisors = [];
+
+				while(div > 0){
+					if(num%div == 0){
+						divisors.push(div);
+					}
+					div--;
+				}
+
+				var sum = 0;
+				for(var i = 0; i < divisors.length; i++){
+					sum = sum + divisors[i];
+				}
+				if(sum > num){
+					document.write("The abundent odd is " + num);
+					varify = false;
+				}
+
+				num = num - 2;
+			}
+			if(varify){
+				document.write("Has been varified");
+			}
+
+			//Find next 100 Abundent Odds
+			num = 947
+			var numCount = 0;
+			var abunds = [];
+			while(numCount < 100){
+				var div = num - 1;
+				var divisors = [];
+
+				while(div > 0){
+					if(num%div == 0){
+						divisors.push(div);
+					}
+					div--;
+				}
+
+				var sum = 0;
+				for(var i = 0; i < divisors.length; i++){
+					sum = sum + divisors[i];
+				}
+
+				if(sum > num){
+					abunds.push(num);
+					numCount++;
+				}
+				num = num + 2;
+			}
+			for(var i = 0; i < abunds.length; i++){
+				document.write("<br/>" + (i+1) + ".) " + abunds[i]);
+			}
+		}
+		</script>
+	</head>
+	<body onload="abundentOdd()">
+		<h1>Abundent and Odd</h1>
+	</body>
+</html>

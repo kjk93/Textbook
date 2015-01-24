@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Question 2.4</title>
+		<script type="text/javascript">
+		function oddSquares(){
+			var proof = true;
+			for(var i = 1; i <= 100; i++){
+				if(longWay(i) != shortWay(i)){
+					proof = false;
+					var failed = i;
+				}
+			}
+			if(proof){
+				document.write("The proof is true for numbers 1 - 100");
+			}
+			else{
+				document.write("The proof is false by the number " + failed);
+			}
+		}
+
+		function longWay(num){
+			var sum = 0;
+			for(var i = num; i > 0; i--){
+				sum = sum + (((2*i) - 1) * ((2*i) - 1));
+			}
+			return sum;
+		}
+
+		function shortWay(num){
+			return (num*((4*(num*num))-1))/3;
+		}
+		</script>
+	</head>
+	<body onload="oddSquares()">
+		<h1>Odd Square Sums</h1><br/>
+	</body>
+</html>

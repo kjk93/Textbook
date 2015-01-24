@@ -1,0 +1,54 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<title>Finding certain Oblong Numbers </title>
+<script>
+var oblongs = Array();
+oblongs.push(2);
+oblongs.push(6);
+
+function genOblongAndCheck(){
+found = 0;
+
+while (found<100){
+       //add next oblong number
+       n = oblongs.length;
+       nextoblong = (n+1)*n;
+       //see if nextoblong is divisible by any oblong in oblongs
+       for(var j=0;j<n;j++){
+          quotient = nextoblong / oblongs[j];
+          if (isInteger(quotient)){
+              //nextoblong is divisible by a previous oblong. 
+              //now check if the quotient is a square
+              
+              if (ans=isSquare(quotient)){
+              found++;
+              document.write(String(nextoblong)+" is the oblong "+String(n+1)+" times "+String(n)+" and is equal to the "+String(j+1)+"th oblong times "+ String(ans)+ " squared.<br/>" );
+                break;
+              }
+
+          }
+       }
+       oblongs.push(nextoblong);
+}
+
+}
+function isInteger(n){
+    return n % 1 === 0;
+
+}
+function isSquare(n){
+var r = Math.sqrt(n);
+if (isInteger(r)){
+return (r);  //non-zero number interpreted as true
+
+}
+else {
+return false;
+}
+}
+</script>
+<body onload="genOblongAndCheck();">
+Determining which oblongs are product of oblong and a square
+</body>
+</html>

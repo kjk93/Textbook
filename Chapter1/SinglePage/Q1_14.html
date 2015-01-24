@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Question 1.14</title>
+		<script type="text/javascript">
+		function sumDivisors(){
+			var num = document.getElementById("num").value;
+
+			var sum = 0;
+			var div = num - 1;
+			var divisors = [];
+
+			while(div > 0){
+				if(num%div == 0){
+					divisors.push(div);
+				}
+				div--;
+			}
+
+			for(var i = 0; i < divisors.length; i++){
+				sum = sum + divisors[i];
+			}
+			document.write("The sum of the proper divisors of " + num + " is " + sum);
+		}
+		</script>
+	</head>
+	<body>
+		<h1>Sum of Proper Divisors</h1><br/>
+		<h2>Please enter a number</h2><br/>
+		<form name="numForm">
+			<input type="text" id="num"/>
+		</form>
+		<button onclick="sumDivisors()">Check</button>
+	</body>
+</html>

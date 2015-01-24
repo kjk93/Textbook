@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Question 2.8</title>
+		<script type="text/javascript">
+		function formula(){
+			//Variables are ment to be changed by the user
+			var sum = 0;
+			var a = 4;
+			var b = 3;
+			var c = 2;
+			var d = 1;
+			var n = 100;
+
+			for(var i = 1; i <= n; i++){
+				var total = a*power3(i) + b*power2(i) + c*i + d;
+				sum = sum + total;
+			}
+
+			document.write("The sum is " + sum);
+		}
+
+		function power3(n){
+			return ((n*(n+1))/2) * ((n*(n+1))/2); 
+		}
+
+		function power2(n){
+			return((n+1)*((2*n)+1)*n)/2
+		}
+		</script>
+	</head>
+	<body onload="formula()">
+		<h1>Formula</h1><br/>
+	</body>
+</html>

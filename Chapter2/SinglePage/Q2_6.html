@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Question 2.6</title>
+		<script type="text/javascript">
+		function chartMethod(){
+			document.write("<table><tr><td>Number&nbsp</td><td>4Power&nbsp</td><td>Current Sum</td></tr>");
+
+			var sum = 0;
+
+			for(var i = 1; i <= 100; i++){
+				document.write("<tr><td>" + i + "</td>");
+				var fourth = i*i*i*i;
+				document.write("<td>" + fourth + "</td>");
+				sum = sum + fourth;
+				document.write("<td>" + sum + "</td></tr>");
+			}
+		}
+		</script>
+	</head>
+	<body onload="chartMethod()">
+		<h1>The Chart Method</h1><br/>
+	</body>
+</html>
