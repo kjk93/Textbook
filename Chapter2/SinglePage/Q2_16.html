@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Question 2.16</title>
+		<script type="text/javascript">
+		//ONLY WORKS UP TO 77TH fibo(CHANGE LIMIT TO 76)
+		function twoFibos(){
+			var currentSum = 0;
+			var fibos = [];
+			var proof = true;
+			var i = 0;
+
+			while(proof && i <= 77){
+				var num = findFibo(i, fibos);
+				fibos.push(num);
+
+				if((i + 1)%2 == 0){
+					currentSum = currentSum + num;
+				}
+				else{
+					if(i > 2){
+						if(currentSum != num - 1){
+							proof = false;
+							document.write("The sum is not equal");
+						}
+					}
+				}
+				i++;
+			}
+			document.write("The proof is " + proof);
+		}
+
+		function findFibo(num, cached){
+			if(num == 0){
+				return 1;
+			}
+			else if(num == 1){
+				return 1;
+			}
+			else{
+				return cached[num - 1] + cached[num - 2];
+			}
+		}
+		</script>
+	</head>
+	<body onload="twoFibos()">
+		<h1>Even Fibonacci</h1><br/>
+	</body>
+</html>
