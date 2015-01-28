@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Question 2.24</title>
+		<script type="text/javascript">
+		//ONLY WORKS UP TO 77TH fibo(CHANGE LIMIT TO 76)
+		function ulam(){
+			var ulam = [1,2,3];
+
+			for(var i = 3; i < 100; i++){
+				var found = false;
+				var num = ulam[i - 1];
+				while(!found){
+					var unique = true;
+					var k = 0;
+					num++;
+					var sums = 0;
+					var sum = [];
+					while(unique && k < ulam.length){
+						var j = k + 1;
+						while(unique && j < ulam.length){
+							if(ulam[k] + ulam[j] == num){
+								sums++;
+								sum.push(ulam[k]);
+								sum.push(ulam[j]);
+							}
+							j++;
+							if(sums > 1){
+								unique = false;
+							}
+						}
+						k++;
+					}
+					if(unique){
+						found = true;
+						ulam.push(num);
+					}
+				}
+			}
+			document.write(ulam.toString("<br/>"));
+		}
+		</script>
+	</head>
+	<body onload="ulam()">
+		<h1>Ulam Sequence</h1><br/>
+	</body>
+</html>

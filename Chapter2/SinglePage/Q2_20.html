@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Question 2.20</title>
+		<script type="text/javascript">
+		function triVarify(){
+			var triNumbers = [];
+			var currentSum = 0;
+			var varify = true;
+			var i = 1;
+
+			while(i <= 100 && varify){
+				triNumbers = addArrayTriangle(triNumbers);
+				currentSum = currentSum + triNumbers[triNumbers.length - 1];
+
+				if(currentSum != equationSum(i)){
+					varify = false;
+					console.log("proof is false at " + i);
+				}
+				i++;
+			}
+			document.write("The first sum are " + varify);
+		}
+		function addArrayTriangle(array){
+			if(array.length == 0){
+				array.push(1);
+			}
+			else{
+				var toAdd;
+				toAdd = array[array.length - 1] + (array.length + 1);
+				array.push(toAdd);
+			}
+			return array;
+		}
+		function equationSum(n){
+			return (((n+1)*(n+2)*n)/6);
+		}
+		</script>
+	</head>
+	<body onload="triVarify()">
+		<h1>100 Triangles Varification</h1><br/>
+	</body>
+</html>

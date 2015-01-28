@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Question 2.22</title>
+		<script type="text/javascript">
+		function oddPrimeSums(){
+			var primes = [];
+
+			var evenNum = 6; //User can change this number
+			document.write("The odd prime sums of " + evenNum + " are: <br/>")
+			var sums = [];
+
+			while(primes[primes.length - 1] < evenNum || primes.length == 0){
+				var prime = addPrime(primes);
+
+				if(prime[prime.length - 1] < evenNum){
+					primes = prime;
+				}
+			}
+			console.log(primes.toString());
+			for(var i = 0; i < primes.length; i++){
+				var sumFound = false;
+				var j = i;
+
+				while(!sumFound && (j < primes.length)){
+					if(primes[i] + primes[j] == evenNum && primes[i]%2 == 1 && primes[j]%2 == 1){
+						sumFound = true;
+						sums.push(primes[i]);
+						sums.push(primes[j]);	
+					}
+					else{
+						j++;
+					}
+				}
+			}
+
+			for(var i = 0; i < sums.length; i = i + 2){
+				document.write("(" + sums[i] + ", " + sums[i+1] + ")" + "<br/>");
+			}
+		}
+
+		function addPrime(array){
+			if(array.length == 0){
+				array.push(1);
+			}
+			else{
+				var num = array[array.length - 1];
+				var prime = false;
+				while(!prime){
+					num++;
+					var check = true;
+					var div = num - 1;
+					while(check && div > 1){
+						if(num%div == 0){
+							check = false;
+						}
+						else{
+							div--;
+						}
+					}
+					if(check){
+						prime = true;
+					}
+				}
+				array.push(num);
+			}
+			return array;
+		}
+		</script>
+	</head>
+	<body onload="oddPrimeSums()">
+		<h1>Odd Prime Sums</h1><br/>
+	</body>
+</html>

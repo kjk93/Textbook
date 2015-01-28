@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Question 2.18</title>
+		<script type="text/javascript">
+		//ONLY WORKS UP TO 38TH fibo(CHANGE LIMIT TO 39)
+		function squareFibos(){
+			console.log
+			var fibos = [];
+			for(var j = 0; j < 40; j++){
+				fibos.push(findFibo(j, fibos));
+			}
+			var proof = true;
+			var i = 1;
+
+			while(proof && i <= 38){
+				var leftSide = (fibos[i] * fibos[i]) - (fibos[i+1]*fibos[i-1]);
+				var rightSide = -1;
+				var power = i;//Already n-1 from they way the array is stored
+				while(power > 1){
+					rightSide = rightSide*-1;
+					power--;
+				}
+
+				if(leftSide != rightSide){
+					document.write("the proof is false when i = " + i);
+					proof = false;
+				}
+				i++;
+			}
+			document.write("The proof is " + proof);
+		}
+
+		function findFibo(num, cached){
+			if(num == 0){
+				return 1;
+			}
+			else if(num == 1){
+				return 1;
+			}
+			else{
+				return cached[num - 1] + cached[num - 2];
+			}
+		}
+		</script>
+	</head>
+	<body onload="squareFibos()">
+		<h1>Squared Fibonacci</h1><br/>
+	</body>
+</html>
